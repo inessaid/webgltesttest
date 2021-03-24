@@ -37,16 +37,16 @@
           },
           onProgress: unityProgress
         });
-        var unityInstance = window.gameInstance;
+var unityInstance = window.gameInstance;
 
-        function unityProgress (unityInstance, progress) {
-          if (!unityInstance.progress) {
-            unityInstance.loader = document.getElementById('loader');
-            unityInstance.progress = document.getElementById('progress');
-            unityInstance.loading = document.getElementById('loading');
+        function unityProgress(unityInstance, progress) {
+            if (!unityInstance.progress) {
+                unityInstance.loader = document.getElementById('loader');
+                unityInstance.progress = document.getElementById('progress');
+                unityInstance.loading = document.getElementById('loading');
             document.dispatchEvent(new CustomEvent('UnityProgressStart'));
           }
-          unityInstance.progress.style.width = (100 * progress) + '%';
+            unityInstance.progress.style.width = (100 * progress) + '%';
           if (progress === 1) {
             document.dispatchEvent(new CustomEvent('UnityLoaded'));
           }
@@ -54,57 +54,58 @@
     </script>
   </head>
   <body>
-      <div id="loader">
-          <div id="loading" class="loading">Loading</div>
-          <div id="progress" class="progress"></div>
+    <div id="loader">
+      <div id="loading" class="loading">Loading</div>
+      <div id="progress" class="progress"></div>
+    </div>
+
+    <div id="game">
+      <div id="gameContainer"></div>
+    </div>
+
+    <div id="instruction">
+      <div id="novr" class="panel center">
+        <h3>You&rsquo;ll need a <a href="https://developer.mozilla.com/topics/mixed-reality/">WebXR-enabled browser</a> and VR headset to fully enjoy this experience.</h3>
+        <p><img src="mousedrag.png" width="70" alt="Click-and-drag your mouse"></p>
+        <p>In the meantime, <strong><em>click and drag</em></strong> to have a look around!</p>
+        <p>
+          <button class="confirm">Continue</button>
+        </p>
       </div>
+    </div>
 
-      <div id="game">
-          <div id="gameContainer"></div>
-      </div>
+    <button id="enterxr" value="Enter VR"></button>
 
-      <div id="instruction">
-          <div id="novr" class="panel center">
-              <h3>You&rsquo;ll need a <a href="https://developer.mozilla.com/topics/mixed-reality/">WebXR-enabled browser</a> and VR headset to fully enjoy this experience.</h3>
-              <p><img src="mousedrag.png" width="70" alt="Click-and-drag your mouse"></p>
-              <p>In the meantime, <strong><em>click and drag</em></strong> to have a look around!</p>
-              <p>
-                  <button class="confirm">Continue</button>
-              </p>
-          </div>
-      </div>
+    <div id="performance" data-enabled="false"></div>
 
-      <button id="enterxr" value="Enter VR"></button>
+    <script src="vendor/gl-matrix-min.js"></script>
+    <script src="webxr.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
 
-      <div id="performance" data-enabled="false"></div>
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
 
-      <script src="vendor/gl-matrix-min.js"></script>
-      <script src="webxr.js"></script>
-      <!-- The core Firebase JS SDK is always required and must be listed first -->
-      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-
-      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-functions.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
-
-      <script>
-          // Your web app's Firebase configuration
-          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-          var firebaseConfig = {
-              apiKey: "AIzaSyBZs-w-ubv5xdBiSQfYUhdU0ThOX4a5dY0",
-              authDomain: "ineswebgltest.firebaseapp.com",
-              databaseURL: "https://ineswebgltest-default-rtdb.firebaseio.com",
-              projectId: "ineswebgltest",
-              storageBucket: "ineswebgltest.appspot.com",
-              messagingSenderId: "403689109979",
-              appId: "1:403689109979:web:7825b46ca3048360f98ffe"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
-          firebase.analytics();
-      </script>
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+ var firebaseConfig = {
+    apiKey: "AIzaSyAnNn4YloX5sGdtf33Z_3KaktP1SDDtizM",
+    authDomain: "dwvt-8656e.firebaseapp.com",
+    databaseURL: "https://dwvt-8656e-default-rtdb.firebaseio.com",
+    projectId: "dwvt-8656e",
+    storageBucket: "dwvt-8656e.appspot.com",
+    messagingSenderId: "376575074599",
+    appId: "1:376575074599:web:1a48f22010af82561dc902",
+    measurementId: "G-ETVEPJ6XLB"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
   </body>
 
 </html>
