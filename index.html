@@ -37,6 +37,7 @@
           },
           onProgress: unityProgress
         });
+        var unityInstance =    window.gameInstance;
 
         function unityProgress (gameInstance, progress) {
           if (!gameInstance.progress) {
