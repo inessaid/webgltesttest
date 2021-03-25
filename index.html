@@ -39,14 +39,14 @@
         });
         var unityInstance =    window.gameInstance;
 
-        function unityProgress (gameInstance, progress) {
-          if (!gameInstance.progress) {
-            gameInstance.loader = document.getElementById('loader');
-            gameInstance.progress = document.getElementById('progress');
-            gameInstance.loading = document.getElementById('loading');
+        function unityProgress (unityInstance, progress) {
+          if (!unityInstance.progress) {
+            unityInstance.loader = document.getElementById('loader');
+            unityInstance.progress = document.getElementById('progress');
+            unityInstance.loading = document.getElementById('loading');
             document.dispatchEvent(new CustomEvent('UnityProgressStart'));
           }
-          gameInstance.progress.style.width = (100 * progress) + '%';
+          unityInstance.progress.style.width = (100 * progress) + '%';
           if (progress === 1) {
             document.dispatchEvent(new CustomEvent('UnityLoaded'));
           }
