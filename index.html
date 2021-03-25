@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
     <meta http-equiv="origin-trial" data-feature="Generic Sensors" data-expires="2018-04-10" content="Aokv0ODVMUPIswIBi6DnpAIjhWefEd8gD8GpVgdYgETj0C5+/3kKMzZE/FOrBwHcpBO6LHuVRrIw3yOT8EMmJAYAAABQeyJvcmlnaW4iOiJodHRwczovL2dpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiR2VuZXJpY1NlbnNvciIsImV4cGlyeSI6MTUyMzMxODQwMH0=">
     <!-- Origin Trial Token, feature = WebVR (For Chrome M62+), origin = https://github.io, expires = 2018-05-07 -->
     <meta http-equiv="origin-trial" data-feature="WebXR (For Chrome M62+)" data-expires="2018-05-07" content="AgINztgDnjFV8da2D9SSzIITBRlHX8mduCR7DXfENxjr9ALduKOxBDdn2n66auQSlljVyhnRWWerxC0BWbE8pAoAAABOeyJvcmlnaW4iOiJodHRwczovL2dpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiV2ViVlIxLjFNNjIiLCJleHBpcnkiOjE1MjU3MjU4MDh9">
-    <title> | webxr</title>
+    <title>Digital Worlds Virtual Tour | DWVT</title>
     <meta name="description" content="">
     
     <link rel="icon" href="favicon.ico">
@@ -37,16 +37,15 @@
           },
           onProgress: unityProgress
         });
-var unityInstance = window.gameInstance;
 
-        function unityProgress(unityInstance, progress) {
-            if (!unityInstance.progress) {
-                unityInstance.loader = document.getElementById('loader');
-                unityInstance.progress = document.getElementById('progress');
-                unityInstance.loading = document.getElementById('loading');
+        function unityProgress (gameInstance, progress) {
+          if (!gameInstance.progress) {
+            gameInstance.loader = document.getElementById('loader');
+            gameInstance.progress = document.getElementById('progress');
+            gameInstance.loading = document.getElementById('loading');
             document.dispatchEvent(new CustomEvent('UnityProgressStart'));
           }
-            unityInstance.progress.style.width = (100 * progress) + '%';
+          gameInstance.progress.style.width = (100 * progress) + '%';
           if (progress === 1) {
             document.dispatchEvent(new CustomEvent('UnityLoaded'));
           }
@@ -54,58 +53,69 @@ var unityInstance = window.gameInstance;
     </script>
   </head>
   <body>
-    <div id="loader">
-      <div id="loading" class="loading">Loading</div>
-      <div id="progress" class="progress"></div>
-    </div>
-
-    <div id="game">
-      <div id="gameContainer"></div>
-    </div>
-
-    <div id="instruction">
-      <div id="novr" class="panel center">
-        <h3>You&rsquo;ll need a <a href="https://developer.mozilla.com/topics/mixed-reality/">WebXR-enabled browser</a> and VR headset to fully enjoy this experience.</h3>
-        <p><img src="mousedrag.png" width="70" alt="Click-and-drag your mouse"></p>
-        <p>In the meantime, <strong><em>click and drag</em></strong> to have a look around!</p>
-        <p>
-          <button class="confirm">Continue</button>
-        </p>
+      <div id="loader">
+          <div id="loading" class="loading">Loading</div>
+          <div id="progress" class="progress"></div>
       </div>
-    </div>
 
-    <button id="enterxr" value="Enter VR"></button>
+      <div id="game">
+          <div id="gameContainer"></div>
+      </div>
 
-    <div id="performance" data-enabled="false"></div>
+      <div id="instruction">
+          <div id="novr" class="panel center">
+              <h3>You&rsquo;ll need a <a href="https://developer.mozilla.com/topics/mixed-reality/">WebXR-enabled browser</a> and VR headset to fully enjoy this experience.</h3>
+              <p><img src="mousedrag.png" width="70" alt="Click-and-drag your mouse"></p>
+              <p>In the meantime, <strong><em>click and drag</em></strong> to have a look around!</p>
+              <p>
+                  <button class="confirm">Continue</button>
+              </p>
+          </div>
 
-    <script src="vendor/gl-matrix-min.js"></script>
-    <script src="webxr.js"></script>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+          <div id="nosecure" class="panel center">
+              <h3>You&rsquo;ll need a secure context (HTTPS or localhost) to execute WebXR applications.</h3>
+              <p><img src="mousedrag.png" width="70" alt="Click-and-drag your mouse"></p>
+              <p>In the meantime, <strong><em>click and drag</em></strong> to have a look around!</p>
+              <p>
+                  <button class="confirm">Continue</button>
+              </p>
+          </div>
 
-<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-functions.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+      </div>
 
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
- var firebaseConfig = {
-    apiKey: "AIzaSyAnNn4YloX5sGdtf33Z_3KaktP1SDDtizM",
-    authDomain: "dwvt-8656e.firebaseapp.com",
-    databaseURL: "https://dwvt-8656e-default-rtdb.firebaseio.com",
-    projectId: "dwvt-8656e",
-    storageBucket: "dwvt-8656e.appspot.com",
-    messagingSenderId: "376575074599",
-    appId: "1:376575074599:web:1a48f22010af82561dc902",
-    measurementId: "G-ETVEPJ6XLB"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
+      <button id="enterxr" value="Enter VR"></button>
+
+      <div id="performance" data-enabled="false"></div>
+
+      <script src="vendor/gl-matrix-min.js"></script>
+      <script src="webxr.js"></script>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-functions.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+
+      <script>
+          // Your web app's Firebase configuration
+          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+          var firebaseConfig = {
+          apiKey: "AIzaSyAnNn4YloX5sGdtf33Z_3KaktP1SDDtizM",
+          authDomain: "dwvt-8656e.firebaseapp.com",
+          databaseURL: "https://dwvt-8656e-default-rtdb.firebaseio.com",
+          projectId: "dwvt-8656e",
+          storageBucket: "dwvt-8656e.appspot.com",
+          messagingSenderId: "376575074599",
+          appId: "1:376575074599:web:1a48f22010af82561dc902",
+          measurementId: "G-ETVEPJ6XLB"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+      </script>
+
   </body>
 
 </html>

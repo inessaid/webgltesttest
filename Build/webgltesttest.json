@@ -1,7 +1,7 @@
 {
-"companyName": "DefaultCompany",
-"productName": "webxr",
-"productVersion": "0.1",
+"companyName": "DigitalWorldsInstitute",
+"productName": "DWVT",
+"productVersion": "0.7",
 "dataUrl": "webgltesttest.data.unityweb",
 "wasmCodeUrl": "webgltesttest.wasm.code.unityweb",
 "wasmFrameworkUrl": "webgltesttest.wasm.framework.unityweb",
